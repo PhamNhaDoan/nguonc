@@ -1,39 +1,26 @@
-class NguonCProvider extends DefaultProvider {
-    constructor() {
-        super({
-            name: "Nguồn C Phim",
-            baseUrl: "https://phim.nguonc.com/api",
-            lang: "vi",
-            type: ProviderType.Movie
-        });
-    }
-
-    async getHome() {
-        const res = await this.request(`${this.baseUrl}/films/phim-moi-cap-nhat?page=1`);
-        const json = JSON.parse(res);
-        return json.items.map(item => ({
+function getHome() {
+    var res = request("https://phim.nguonc.com/api/films/phim-moi-cap-nhat?page=1");
+    var json = JSON.parse(res);
+    return json.items.map(function(item) {
+        return {
             name: item.name,
-            url: `${this.baseUrl}/film/${item.slug}`,
+            url: "https://phim.nguonc.com/api/film/" + item.slug,
             poster: item.thumb_url
-        }));
-    }
+        };
+    });
+}
 
-    async search(query) {
-        const res = await this.request(`${this.baseUrl}/films/search?keyword=${encodeURIComponent(query)}`);
-        const json = JSON.parse(res);
-        return json.items.map(item => ({
+function search(query) {
+    var res = request("https://phim.nguonc.com/api/films/search?keyword=" + encodeURIComponent(query));
+    var json = JSON.parse(res);
+    return json.items.map(function(item) {
+        return {
             name: item.name,
-            url: `${this.baseUrl}/film/${item.slug}`,
+            url: "https://phim.nguonc.com/api/film/" + item.slug,
             poster: item.thumb_url
-        }));
-    }
-
-    async loadDetail(url) {
-        const res = await this.request(url);
-        const json = JSON.parse(res);
-        const movie = json.movie;
-
-        const episodes = json.episodes.flatMap(server => 
+        };
+    });
+}
             server.items.map(ep => ({
                 name: `Tập ${ep.name}`,
                 url: ep.embed,
