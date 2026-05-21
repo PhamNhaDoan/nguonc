@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Nguồn C Phim",
+    "url": "https://raw.githubusercontent.com/phamnhadoan/nguonc/main/index.js",
+    "version": 1,
+    "description": "Xem phim từ NguonC API"
+  }
+]
