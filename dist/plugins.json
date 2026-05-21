@@ -1,8 +1,16 @@
-[
-  {
-    "name": "Nguồn C Phim",
-    "url": "https://raw.githubusercontent.com/PhamNhaDoan/nguonc/main/index.js",
-    "version": 1,
-    "description": "Xem phim từ NguonC API"
-  }
-]
+{
+  "formatVersion": 3,
+  "pluginMinApi": 1,
+  "name": "NguonC Repo",
+  "author": "PhamNhaDoan",
+  "description": "Kho phim NguonC",
+  "plugins": [
+    {
+      "name": "Nguồn C Phim",
+      "url": "https://raw.githubusercontent.com/PhamNhaDoan/nguonc/main/index.js",
+      "version": 1,
+      "description": "Xem phim từ NguonC API",
+      "language": "vi"
+    }
+  ]
+}
